@@ -11,9 +11,8 @@ include_directories(include)
 
 file(GLOB SOURCES "src/*.c")
 
-add_library(Chaufa SHARED ${SOURCES})
+add_library(Chaufa STATIC ${SOURCES})
 
 target_link_libraries(Chaufa Vulkan::Vulkan User32)	
 
-install(TARGETS Chaufa DESTINATION lib)
-install(DIRECTORY include/ DESTINATION include)
+target_link_directories(Chaufa PUBLIC include)
