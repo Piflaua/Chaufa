@@ -3,16 +3,14 @@
 #
 cmake_minimum_required(VERSION 3.8)
 
-project(Chaufa C)
+project(chaufa C)
 
 find_package(Vulkan REQUIRED)
 
 include_directories(include)
 
-file(GLOB SOURCES "src/*.c")
+add_library(chaufa SHARED "${CMAKE_SOURCE_DIR}/include/Chaufa.h" src/Chaufa.c)
 
-add_library(Chaufa STATIC ${SOURCES})
-
-target_link_libraries(Chaufa Vulkan::Vulkan User32)	
-
-target_link_directories(Chaufa PUBLIC include)
+target_link_directories(chaufa PUBLIC "$<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>" "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>")
+target_link_directories(chaufa PRIVATE "src" "${CMAKE_BINARY_DIR}/src")
+target_link_libraries(chaufa PRIVATE Vulkan::Vulkan User32)
