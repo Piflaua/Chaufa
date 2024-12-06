@@ -1,8 +1,6 @@
-﻿// Chaufa.h : Include file for standard system include files,
-// or project specific include files.
+﻿#pragma once
 
-#pragma once
+#include <stdbool.h>
 
-void chaufaInitialize();
-
-// TODO: Reference additional headers your program requires here.
+void chaufaInitializeWindow(const char windowTitle[], int windowWidth, int windowHeight, bool isWindowResizable);
+void chaufaTerminateWindow();
