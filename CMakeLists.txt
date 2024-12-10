@@ -17,6 +17,7 @@ target_include_directories(chaufa
 							$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 						PRIVATE
 							${CMAKE_SOURCE_DIR}/src
+							${CMAKE_BINARY_DIR}/src
 )
 
 target_link_libraries(chaufa PRIVATE Vulkan::Vulkan User32)
