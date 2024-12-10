@@ -22,9 +22,17 @@ target_include_directories(chaufa
 
 target_link_libraries(chaufa PRIVATE Vulkan::Vulkan User32)
 
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+
 install(TARGETS chaufa
 	EXPORT chaufaTargets
 	RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
 	ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
 	LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+)
+
+install(EXPORT chaufaTargets
+	FILE chaufaTargets.cmake
+	NAMESPACE chaufa::
+	DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/chaufa"
 )
