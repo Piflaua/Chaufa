@@ -11,13 +11,13 @@ project(chaufa
 
 set(CMAKE_C_STANDARD 99)
 
-//Delete
+# Delete
 include(CMakePackageConfigHelpers)
-//Delete
+# Delete
 
 include(GNUInstallDirs)
 
-//Delete
+# Delete
 set(CHAUFA_CONFIG_PATH "${CMAKE_INSTALL_LIBDIR}/cmake/chaufa")
 
 configure_package_config_file(cmake/chaufaConfig.cmake.in
@@ -30,11 +30,11 @@ write_basic_package_version_file(
 	VERSION ${PROJECT_VERSION}
 	COMPATIBILITY SameMajorVersion
 )
-//Delete
+# Delete
 
 add_subdirectory(src)
 
-//Delete
+# Delete
 install(DIRECTORY include/
 	DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
@@ -44,7 +44,7 @@ install(FILES
 	${CMAKE_CURRENT_BINARY_DIR}/src/chaufaConfigVersion.cmake
 	DESTINATION "{CHAUFA_CONFIG_PATH}"
 )
-//Delete
+# Delete
 
 install(EXPORT chaufaTargets
 	FILE chaufaTargets.cmake
