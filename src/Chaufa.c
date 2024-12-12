@@ -1,4 +1,4 @@
-﻿#include "Chaufa.h"
+﻿#include "../include/Chaufa.h"
 #include <windows.h>
 
 const char windowClassName[] = "chaufa_window";
