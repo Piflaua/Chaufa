@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 3.10)
 
 project(chaufa 
 	VERSION 1.0
-	DESCRIPTION "Eat chaufa with sillao"
+	DESCRIPTION "Eat arroz chaufa"
 	LANGUAGES C
 )
 
