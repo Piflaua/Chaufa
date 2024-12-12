@@ -1,7 +1,7 @@
 find_package(Vulkan REQUIRED)
 
 add_library(${PROJECT_NAME} 
-	"${CMAKE_SOURCE_DIR}/include/Chaufa.h"
+	"../include/Chaufa.h"
 	Chaufa.c
 )
 
