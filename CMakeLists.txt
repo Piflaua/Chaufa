@@ -13,7 +13,7 @@ set(CMAKE_C_STANDARD 99)
 
 find_package(Vulkan REQUIRED)
 
-add_library(${PROJECT_NAME} 
+add_library(${PROJECT_NAME}
 	"include/Chaufa.h"
 	"src/Chaufa.c"
 )
