@@ -10,41 +10,30 @@ project(chaufa
 )
 
 set(CMAKE_C_STANDARD 99)
-
-# Delete
-include(CMakePackageConfigHelpers)
-# Delete
-
 include(GNUInstallDirs)
 
-# Delete
-set(CHAUFA_CONFIG_PATH "${CMAKE_INSTALL_LIBDIR}/cmake/chaufa")
+find_package(Vulkan REQUIRED)
 
-configure_package_config_file(cmake/chaufaConfig.cmake.in
-	src/chaufaConfig.cmake
-	INSTALL_DESTINATION "{CHAUFA_CONFIG_PATH}"
+add_library(${PROJECT_NAME} 
+	"include/Chaufa.h"
+	"src/Chaufa.c"
 )
 
-write_basic_package_version_file(
-	src/chaufaConfigVersion.cmake
-	VERSION ${PROJECT_VERSION}
-	COMPATIBILITY SameMajorVersion
-)
-# Delete
+target_link_libraries(${PROJECT_NAME} PRIVATE Vulkan::Vulkan User32)
 
-add_subdirectory(src)
-
-# Delete
-install(DIRECTORY include/
-	DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+target_include_directories(${PROJECT_NAME}
+	PUBLIC
+		$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+		$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
 
-install(FILES
-	${CMAKE_CURRENT_BINARY_DIR}/src/chaufaConfig.cmake
-	${CMAKE_CURRENT_BINARY_DIR}/src/chaufaConfigVersion.cmake
-	DESTINATION "{CHAUFA_CONFIG_PATH}"
+install(TARGETS ${PROJECT_NAME}
+	EXPORT chaufaTargets
+	LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+	ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+	RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+	INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
-# Delete
 
 install(EXPORT chaufaTargets
 	FILE chaufaTargets.cmake
